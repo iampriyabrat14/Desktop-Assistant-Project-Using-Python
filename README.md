@@ -4,12 +4,27 @@
 
 1-Create a New Virtual Eenvironment 
 
-""" Virtualenv env """
+ ```bash
+ Virtualenv env 
+```
 
 2-Acivate the Virtual Environment 
 
-""" env\Scripts\activate """
+ ```bash
+  env\Scripts\activate 
+```
 
 3-Install All the Packages in the requirmemts file
 
-""" pip install -r requirements.txt """"
+ ```bash 
+  pip install -r requirements.txt 
+
+```
+4- For UI
+```
+streamlit run app.py
+
+```
+
+
+ 
