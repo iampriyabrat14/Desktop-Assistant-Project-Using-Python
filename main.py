@@ -3,7 +3,8 @@ import speech_recognition as sr
 import datetime
 import wikipedia
 import webbrowser
-import os 
+import os
+import smtplib
 
 #Taking Voice From the System
 engine =pyttsx3.init('sapi5')
@@ -19,6 +20,16 @@ def speakfunc(text):
 
     engine.say(text)
     engine.runAndWait()
+
+# mail functionality
+def sendEmail(to,content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('youremail@gmail.com','passward')
+    server.sendmail('youremail@gmail.com',to,content)
+    server.close()
+
 
 
 #speech recognization function 
@@ -88,6 +99,19 @@ if __name__=="__main__":
     elif "google" in query:
                 speakfunc("Opening google")
                 webbrowser.open("google.com")
+    #This query for sent Email
+    elif 'email' in query:
+        try:
+            speakfunc("ok sir. what should i say")
+            content = takecommandfunc()
+            to = "youremail@gmail.com"
+            sendEmail(to,content)
+            speakfunc("Email has been sent")
+            
+        except Exception as e:
+            print(e)
+            speakfunc("Sorry sir there is a problem , i haven't been able to send the email")
+
 
     
     elif 'time' in query:
